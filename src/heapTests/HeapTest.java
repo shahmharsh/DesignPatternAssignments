@@ -40,9 +40,6 @@ public class HeapTest {
 		heap.add("abc");
 		heap.add("arwbbc");
 		heap.add("abwrc");
-		
-		
-		
 	}
 
 	@Test

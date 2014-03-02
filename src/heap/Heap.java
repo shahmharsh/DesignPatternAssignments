@@ -1,8 +1,8 @@
 package heap;
+
 import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Stack;
 
@@ -13,7 +13,7 @@ public class Heap extends AbstractCollection<String> {
 	
 	public Heap(Algorithm minMax)
 	{
-		root=new HeapNode(null);
+		root=null;
 		this.minMax = minMax;
 	}
 	
@@ -30,14 +30,19 @@ public class Heap extends AbstractCollection<String> {
 			return false;
 		}
 		
-		HeapNode newHeapNode = new HeapNode(value);
-		return minMax.add(root, newHeapNode);
+		if(root == null)
+		{
+			root = new HeapRealNode(value);
+			return true;
+		}
+		
+		return minMax.add(root, value);
 	}
 
 	@Override
 	public boolean isEmpty() {
 		
-		return (root.value == null);
+		return (root == null);
 	}
 
 	public String peek()
@@ -48,7 +53,6 @@ public class Heap extends AbstractCollection<String> {
 	@Override
 	public Iterator<String> iterator() 
 	{
-		// TODO Auto-generated method stub
 		return new HeapIterator();
 	}
 	
@@ -95,6 +99,7 @@ public class Heap extends AbstractCollection<String> {
 		public HeapIterator()
 		{
 			HeapNode iteratingNode = root;
+
 			while(iteratingNode.hasLeft())
 			{	
 				stack.push(iteratingNode);
@@ -116,7 +121,6 @@ public class Heap extends AbstractCollection<String> {
 			if(stack.empty())
 			{
 				throw new NoSuchElementException();
-				
 			}
 			else
 			{
@@ -147,29 +151,29 @@ public class Heap extends AbstractCollection<String> {
 	public static void main(String args[])
 	{
 		Heap heap;
-		heap = new Heap(new MaxHeap());
-		System.out.println(heap.isEmpty());
-		heap.add("abc");
-		heap.add("arwbbc");
-		heap.add("abwrc");
+		heap = new Heap(new MinHeap());
+		//System.out.println(heap.isEmpty());
+		heap.add("abcing");
+		heap.add("arwbbcing");
+		heap.add("abwrcing");
+		heap.add("a3vfeing");
+		//System.out.println(heap.size());
 		
-		Iterator<String> heapIterator = heap.iterator();
+		/*Iterator<String> heapIterator = heap.iterator();
 		
 		while(heapIterator.hasNext())
 			System.out.println(heapIterator.next());
 		
-		System.out.println(heap.size());
-		
-		List<String> tmp = new ArrayList<String>();
-		tmp.add("qef");
-		tmp.add("qfeadc");
-		tmp.add("qfeacQW");
-			
 		System.out.println(heap.toString());
 		String[] array = heap.toArray();
 		
 		for(int i=0;i<array.length; i++)
-			System.out.println(array[i]);
-	}
-	
+			System.out.println(array[i]);*/
+		
+		/*
+		IngFilter ingFilterObject = new IngFilter(heapIterator);
+		
+		while(ingFilterObject.hasNext())
+			System.out.println(ingFilterObject.next());*/
+	}	
 }

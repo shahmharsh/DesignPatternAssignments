@@ -2,16 +2,6 @@ package heap;
 
 public class HeapNullNode extends HeapNode {
 
-	public HeapNullNode(String value) {
-		super(value);
-		// TODO Auto-generated constructor stub
-	}
-
-	/*public HeapNullNode()
-	{
-		value = null;
-	}
-	
 	@Override
 	public int height() {
 		return 0;
@@ -35,5 +25,5 @@ public class HeapNullNode extends HeapNode {
 	@Override
 	public boolean isNull() {
 		return true;
-	}*/
+	}
 }

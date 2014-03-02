@@ -2,12 +2,7 @@ package heap;
 
 public class HeapRealNode extends HeapNode{
 
-	public HeapRealNode(String value) {
-		super(value);
-		// TODO Auto-generated constructor stub
-	}
-
-	/*public HeapRealNode(String value) 
+	public HeapRealNode(String value) 
 	{
 		this.value = value;
 		left = new HeapNullNode();
@@ -38,13 +33,13 @@ public class HeapRealNode extends HeapNode{
 	@Override
 	public boolean hasRight()
 	{
-		return right.isNull();
+		return !(right.isNull());
 	}
 	
 	@Override
 	public boolean hasLeft()
 	{
-		return left.isNull();
+		return !(left.isNull());
 	}
 	
 	@Override
@@ -63,5 +58,5 @@ public class HeapRealNode extends HeapNode{
 	{
 		right = null;
 		right = new HeapRealNode(value);
-	}*/
+	}
 }

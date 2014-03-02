@@ -1,19 +1,18 @@
 package heap;
 
-public class HeapNode {
+public abstract class HeapNode {
 	
 	protected String value;
 	protected HeapNode left;
 	protected HeapNode right;
 	
-	public HeapNode(String value)
-	{
-		this.value = value;
-		left = right = null;
-	}
-
+	public abstract int height();
+	public abstract int size();
+	public abstract boolean hasLeft();
+	public abstract boolean hasRight();
+	public abstract boolean isNull();
 	
-	public int height()
+	/*public int height()
 	{
 		int leftHeight = 0;
 		int rightHeight = 0;
@@ -55,5 +54,6 @@ public class HeapNode {
 	public boolean isNull()
 	{
 		return false;
-	}
+		
+	}*/
 }
