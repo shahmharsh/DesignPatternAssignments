@@ -13,7 +13,7 @@ public class Heap extends AbstractCollection<String> {
 	
 	public Heap(Algorithm minMax)
 	{
-		root=null;
+		root=new HeapNullNode();
 		this.minMax = minMax;
 	}
 	
@@ -21,17 +21,18 @@ public class Heap extends AbstractCollection<String> {
 	{
 		if(value == null) // makes sure null values are not allowed
 		{
-			return false;
+			throw new NullPointerException();
 		}
 		
 		value = value.trim(); // removes leading and trailing whitespace
 		if(value.length() == 0) // makes sure blank or white spaces are not allowed
 		{
-			return false;
+			throw new IllegalArgumentException("Blanks not allowed.");
 		}
 		
-		if(root == null)
+		if(root.isNull())
 		{
+			root = null;
 			root = new HeapRealNode(value);
 			return true;
 		}
@@ -42,7 +43,7 @@ public class Heap extends AbstractCollection<String> {
 	@Override
 	public boolean isEmpty() {
 		
-		return (root == null);
+		return root.isNull();
 	}
 
 	public String peek()
@@ -150,30 +151,6 @@ public class Heap extends AbstractCollection<String> {
 	
 	public static void main(String args[])
 	{
-		Heap heap;
-		heap = new Heap(new MinHeap());
-		//System.out.println(heap.isEmpty());
-		heap.add("abcing");
-		heap.add("arwbbcing");
-		heap.add("abwrcing");
-		heap.add("a3vfeing");
-		//System.out.println(heap.size());
 		
-		/*Iterator<String> heapIterator = heap.iterator();
-		
-		while(heapIterator.hasNext())
-			System.out.println(heapIterator.next());
-		
-		System.out.println(heap.toString());
-		String[] array = heap.toArray();
-		
-		for(int i=0;i<array.length; i++)
-			System.out.println(array[i]);*/
-		
-		/*
-		IngFilter ingFilterObject = new IngFilter(heapIterator);
-		
-		while(ingFilterObject.hasNext())
-			System.out.println(ingFilterObject.next());*/
 	}	
 }

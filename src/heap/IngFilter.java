@@ -3,7 +3,7 @@ package heap;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class IngFilter {
+public class IngFilter implements Iterator<String> {
 	
 	private Iterator<String> ingIterator;
 	private String current;
@@ -15,6 +15,7 @@ public class IngFilter {
 		usedFlag = true;
 	}
 	
+	@Override
 	public boolean hasNext()
 	{
 		while(ingIterator.hasNext())
@@ -29,6 +30,7 @@ public class IngFilter {
 		return false;
 	}
 	
+	@Override
 	public String next()
 	{
 		if(!usedFlag)
@@ -46,4 +48,11 @@ public class IngFilter {
 			throw new NoSuchElementException();
 		}
 	}
+
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
